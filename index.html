@@ -3,72 +3,48 @@
   <head>
     <meta charset="utf-8">
     <title>問題解きなはれ</title>
-    <style>
-      .col {
-      float: left;
-      width: 256px;
-      text-align: center;
-      font-size: 128px;
-      }
-      .hoge {
-      width: 512px;
-      margin: 0px auto;
-      }
-    </style>
+    <!-- <link href="style.css" rel="stylesheet" type="text/css"> -->
   </head>
   <body>
-    <div class="hoge">
-      <div class="col">
-        <span id="num0">?</span><br>
-        <input type="button" value="STOP" id="stop0">
-      </div>
-      <div class="col">
-        <span id="num1">？？</span><br>
-        <input type="button" value="STOP" id="stop1">
-      </div>
-    </div>
-    <script>
-      (function() {
-      var timers, nums, probs = 5;
-
-      document.getElementById('stop0').onclick = function() {
-      stopSlot(0);
-      };
-      document.getElementById('stop1').onclick = function() {
-      stopSlot(1);
-      };
-
-      function startSlot() {
-      timers = [];
-      nums = [];
-
-      runSlot(0);
-      runSlot(1);
-      }
-
-      function stopSlot(n) {
-      if (typeof nums[n] !== 'undefined') {
-      return;
-      }
-      clearTimeout(timers[n]);
-      nums[n] = document.getElementById('num'+n).innerHTML;
-      }
-
-      function runSlot(n) {
-      if (n == 0) {
-      document.getElementById('num'+n).innerHTML = Math.floor(Math.random() * probs) + 1;
-      } else {
-      var names = ['斎藤', '堀田', '野添', '伊藤'];
-      var i = Math.floor(Math.random() * 4);
-      document.getElementById('num'+n).innerHTML = names[i];
-      }
-      timers[n] = setTimeout(function() {
-      runSlot(n);
-      }, 1);
-      }
-
-      startSlot();
-      })();
-    </script>
+    <form method="POST" action="start.php">
+      章番号：
+      <select name="chapter">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+        <option>13</option>
+      </select>
+      </br>
+      問題数：
+      <select name="num">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+      </select>
+      </br>
+      欠席者：
+      <input type="checkbox" name="people[]" value="saito"/> 斎藤
+      <input type="checkbox" name="people[]" value="nozoe"/> 野添
+      <input type="checkbox" name="people[]" value="horita"/> 堀田
+      <input type="checkbox" name="people[]" value="itoh"/> 伊藤
+      </br>
+      <input type="submit" value="Complete">
+    </form>
   </body>
 </html>

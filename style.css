@@ -1,0 +1,10 @@
+.col {
+    float: left;
+    width: 256px;
+    text-align: center;
+    font-size: 128px;
+}
+.hoge {
+    width: 512px;
+    margin: 0px auto;
+}
